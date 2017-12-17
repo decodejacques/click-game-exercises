@@ -3,6 +3,8 @@ var lost = false;
 var mainDiv = document.getElementById('app');
 var body = document.getElementById('main');
 var btn = document.getElementById('btn');
+var start = document.getElementById('start');
+
 btn.style.display = "none"
 btn.style.left = (100 + Math.random() * 400) + 'px';
 btn.style.top = (100 + Math.random() * 400) + 'px';
@@ -30,4 +32,7 @@ function startRound() {
     setTimeout(potentialLoss, 1500)
 }
 
-setTimeout(startRound, Math.random() * 2000 + 1000);
+start.addEventListener('click', () => {
+    start.style.display = "none";
+    setTimeout(startRound, Math.random() * 2000 + 1000)
+});
