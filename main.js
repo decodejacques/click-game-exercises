@@ -6,6 +6,7 @@ var btn = document.getElementById('btn');
 var start = document.getElementById('start');
 var restart = document.getElementById('restart')
 
+//var numButtons = 1 + Math.floor(Math.random() * 10)
 var numButtons = 5
 
 var btns = [];
@@ -40,7 +41,7 @@ function createBtn() {
     btn.innerText = "click!";
     btn.addEventListener('click', event => {
         event.stopPropagation();
-        buttonsClicked = 0;
+        buttonsClicked++;
         btn.style.display = "none";
         if(buttonsClicked == numButtons) {
             potentialWin();
@@ -64,7 +65,7 @@ function startRound() {
     body.addEventListener('click', () => {
         potentialLoss();
     })
-    setTimeout(potentialLoss, 4000)
+    setTimeout(potentialLoss, 3000)
 }
 
 start.addEventListener('click', () => {
