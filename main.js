@@ -2,7 +2,10 @@ var won = false;
 var lost = false;
 var mainDiv = document.getElementById('app');
 var body = document.getElementById('main');
-
+var btn = document.getElementById('btn');
+btn.style.display = "none"
+btn.style.left = (100 + Math.random() * 400) + 'px';
+btn.style.top = (100 + Math.random() * 400) + 'px';
 function potentialLoss() {
     if (won) return;
     lost = true;
@@ -17,16 +20,14 @@ function potentialWin() {
 
 function startRound() {
     mainDiv.innerText = "ROUND STARTED!";
-
-    body.addEventListener('click', () => {
+    btn.style.display = "";
+    btn.addEventListener('click', () => {
         potentialWin();
     })
-    body.addEventListener('keydown', event => {
-        if (event.key == " ") {
-            potentialWin();
-        }
+    body.addEventListener('click', () => {
+        potentialLoss();
     })
-    setTimeout(potentialLoss, 500)
+    setTimeout(potentialLoss, 1500)
 }
 
 setTimeout(startRound, Math.random() * 2000 + 1000);
