@@ -7,6 +7,7 @@ var start = document.getElementById('start');
 var restart = document.getElementById('restart')
 
 var numButtons = 5
+
 var btns = [];
 var buttonsClicked = 0;
 
@@ -63,7 +64,7 @@ function startRound() {
     body.addEventListener('click', () => {
         potentialLoss();
     })
-    setTimeout(potentialLoss, 10000)
+    setTimeout(potentialLoss, 4000)
 }
 
 start.addEventListener('click', () => {
