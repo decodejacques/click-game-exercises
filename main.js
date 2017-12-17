@@ -1,6 +1,5 @@
 var won = false;
 var lost = false;
-var started = false;
 var mainDiv = document.getElementById('app');
 var body = document.getElementById('main');
 
