@@ -6,11 +6,11 @@ var btn = document.getElementById('btn');
 var start = document.getElementById('start');
 var restart = document.getElementById('restart')
 
-btn.style.display = "none"
-btn.style.left = (100 + Math.random() * 400) + 'px';
-btn.style.top = (100 + Math.random() * 400) + 'px';
+var numButtons = 5
+var btns = [];
+var buttonsClicked = 0;
 
-restart.style.display="none";
+restart.style.display = "none";
 
 function restartAppear() {
     restart.style.display = "";
@@ -30,16 +30,40 @@ function potentialWin() {
     restartAppear();
 }
 
+function createBtn() {
+    var btn = document.createElement("button");
+    btn.style.display = "none"
+    btn.style.position = "absolute"
+    btn.style.left = (100 + Math.random() * 400) + 'px';
+    btn.style.top = (100 + Math.random() * 400) + 'px';
+    btn.innerText = "click!";
+    btn.addEventListener('click', event => {
+        event.stopPropagation();
+        buttonsClicked = 0;
+        btn.style.display = "none";
+        if(buttonsClicked == numButtons) {
+            potentialWin();
+        }
+    })
+
+    btns.push(btn);
+    body.appendChild(btn);
+}
+
+for (var i = 0; i < numButtons; i++) {
+    createBtn();
+}
+
+
 function startRound() {
     mainDiv.innerText = "ROUND STARTED!";
-    btn.style.display = "";
-    btn.addEventListener('click', () => {
-        potentialWin();
-    })
+    btns.forEach(btn => {
+        btn.style.display = "";
+    });
     body.addEventListener('click', () => {
         potentialLoss();
     })
-    setTimeout(potentialLoss, 1500)
+    setTimeout(potentialLoss, 10000)
 }
 
 start.addEventListener('click', () => {
